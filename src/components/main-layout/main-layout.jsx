@@ -1,0 +1,35 @@
+import React, {Component} from 'react'
+import Footer from './footer'
+
+
+class MainLayout extends Component {
+    constructor(props) {
+        super(props);
+        let pathName = props ? props.props.pathName.substring(1) : 'home';
+        this.state = {
+            activeItem: pathName !== 'home' ? pathName : 'home',
+        }
+    }
+
+    render() {
+        return (
+            <div className={'main-container'}>
+                <div className={'header-section'}>
+                    <img src={"/icon.png"} alt="ギャラ飲み出会い系サイト【 ギャノミー.com 】のアイコン"/>
+                    <h1>
+                        全国地域別検索：ハイクラスな大人の男女の出会い &nbsp; &nbsp;ギャラ飲み / デート 専用 マッチング掲示板サイト
+                        <p style={{color: '#e5004f', display: 'inline'}}> GYANOMI.com</p>
+                        【 ギャノミー.com 】
+                    </h1>
+                    <a href="#">https://gyanomi.com/</a>
+                </div>
+                <div>
+                    {this.props.children}
+                </div>
+                <Footer/>
+            </div>
+        );
+    }
+}
+
+export default MainLayout;
