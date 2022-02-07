@@ -13,6 +13,10 @@ export default class Column extends React.Component {
         this.rightImage = props.type === 's'
     }
 
+    getDetails = () => {
+        this.props.props.history.push(`${this.props.gender === 'male'? '/pm10001': '/pg10001'}`)
+    }
+
     render() {
         return (
             <Grid.Column computer={4} tablet={4} mobile={4} className={'popularity-column'}>
@@ -22,7 +26,7 @@ export default class Column extends React.Component {
             <div className={'popularity-elements'}>
                 {
                     this.props.data.map((element, index) => {
-                        return <div className={'box'}>
+                        return <div className={'box'} onClick={() => {this.getDetails()}}>
                             <img className={'profile-image'} src={element.profileImage} alt={'img'}/>
                             <div className={'box-text'}>
                                 <p>{element.header}</p>

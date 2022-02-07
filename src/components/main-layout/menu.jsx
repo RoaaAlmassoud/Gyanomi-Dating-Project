@@ -1,20 +1,23 @@
 import React from 'react';
 
 function change_image() {
-    let url = document.getElementById('Change_Image').src;
-    let fUllFirstImageUrl = `${window.location.origin}/images/m_01.png`;
-    if (url === fUllFirstImageUrl) {
-        document.getElementById('Change_Image').src = 'images/m_02.png';
-    } else {
-        document.getElementById('Change_Image').src = 'images/m_01.png';
+    let img = document.getElementById('Change_Image');
+    if(img){
+        let fUllFirstImageUrl = `${window.location.origin}/images/m_01.png`;
+        if (img.src === fUllFirstImageUrl) {
+            document.getElementById('Change_Image').src = 'images/m_02.png';
+        } else {
+            document.getElementById('Change_Image').src = 'images/m_01.png';
+        }
     }
+
 }
 
 function Menu() {
     setInterval(change_image, 500);
 
     let pathname = window.location.pathname;
-    let maleImage = pathname === '/top_m00'? 'images/bt_menutop04.png': 'images/bt_menutop03.png';
+    let maleImage = pathname === '/top_m00' || '/pm10001'? 'images/bt_menutop04.png': 'images/bt_menutop03.png';
     return (
         <div className={'menu-section'}>
             <div className={'left-menu'}>

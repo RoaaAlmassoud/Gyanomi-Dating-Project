@@ -207,9 +207,9 @@ export default class TopG00 extends React.Component {
                 <Menu/>
                 <Grid>
                     <Grid.Row>
-                        <Column data={this.columnsData.firstColumn} type={'first'}/>
-                        <Column data={this.columnsData.secondColumn} type={'second'}/>
-                        <Column data={this.columnsData.thirdColumn} type={'third'}/>
+                        <Column data={this.columnsData.firstColumn} type={'first'} props={this.props}/>
+                        <Column data={this.columnsData.secondColumn} type={'second'} props={this.props}/>
+                        <Column data={this.columnsData.thirdColumn} type={'third'} props={this.props}/>
                         <Grid.Column computer={4} tablet={4} mobile={4}>
                          <SideMenu/>
                         </Grid.Column>
