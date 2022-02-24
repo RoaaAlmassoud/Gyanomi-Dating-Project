@@ -4,6 +4,7 @@ import TopG00 from './components/home/top-g00'
 import TopM00 from './components/home/top-m00'
 import FemaleComponent from './components/profile-details/female-component'
 import MaleComponent from './components/profile-details/male-component'
+import Register from './components/register/register'
 //import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
@@ -42,6 +43,8 @@ export default class App extends Component {
                                render={(props) => <FemaleComponent {...props}/>}/>
                         <Route exact path="/pm10001"
                                render={(props) => <MaleComponent {...props}/>}/>
+                        <Route exact path="/register"
+                               render={(props) => <Register {...props}/>}/>
                     </Switch>
                 </MainLayout>
 

@@ -585,12 +585,12 @@ body ::-webkit-scrollbar-track {
     padding-top: 7vh;
 }
 
-.main-menu-section .profile-details-grid .pr-section p:first-child{
-   font-size: 1vw;
+.main-menu-section .profile-details-grid .pr-section p:first-child {
+    font-size: 1vw;
     margin-bottom: 0;
 }
 
-.main-menu-section .profile-details-grid .pr-section p:nth-child(2){
+.main-menu-section .profile-details-grid .pr-section p:nth-child(2) {
     font-size: 0.8vw;
     line-height: 1.3em;
 }
@@ -600,17 +600,17 @@ body ::-webkit-scrollbar-track {
     width: 100%;
 }
 
-.main-menu-section .profile-details-grid .second-column .profile-header-section{
+.main-menu-section .profile-details-grid .second-column .profile-header-section {
     display: flex;
     width: 100%;
 }
 
 .main-menu-section .profile-details-grid .second-column .profile-header-section .first-header,
-.main-menu-section .profile-details-grid .second-column .profile-header-section .second-header{
+.main-menu-section .profile-details-grid .second-column .profile-header-section .second-header {
     width: 50%;
 }
 
-.main-menu-section .profile-details-grid .second-column .profile-header-section .second-header{
+.main-menu-section .profile-details-grid .second-column .profile-header-section .second-header {
     text-align: right;
 }
 
@@ -653,15 +653,15 @@ body ::-webkit-scrollbar-track {
     padding-left: 10vw;
 }
 
-.main-menu-section .profile-details-grid .second-column .info-section-keys .one-value{
+.main-menu-section .profile-details-grid .second-column .info-section-keys .one-value {
     width: 100%;
 }
 
-.main-menu-section .profile-details-grid .second-column .info-section-keys .one-value span:first-child{
+.main-menu-section .profile-details-grid .second-column .info-section-keys .one-value span:first-child {
     width: 50%;
 }
 
-.main-menu-section .profile-details-grid .second-column .info-section-keys .one-value span:nth-child(2){
+.main-menu-section .profile-details-grid .second-column .info-section-keys .one-value span:nth-child(2) {
     width: 50%;
     float: right;
 }
@@ -708,11 +708,11 @@ body ::-webkit-scrollbar-track {
     padding-left: 2vw;
 }
 
-.main-menu-section .profile-details-grid .details-section .bottom-section{
+.main-menu-section .profile-details-grid .details-section .bottom-section {
     display: flex;
 }
 
-.main-menu-section .profile-details-grid .details-section .bottom-section .text-section-details{
+.main-menu-section .profile-details-grid .details-section .bottom-section .text-section-details {
     width: 65%;
 }
 
@@ -747,4 +747,267 @@ body ::-webkit-scrollbar-track {
     font-size: 1.2vw;
     line-height: 1.5em;
     margin-top: 4vh;
+}
+
+.register-container.ui.grid {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 35vh;
+    left: 50vw;
+    width: 100vw;
+    height: 80vh;
+    transform: translate(-50%, -38%);
+    text-align: center;
+}
+
+.register-container.ui.grid .images-section img:first-child {
+    width: 20vw;
+    margin-right: 2vw;
+}
+
+.register-container.ui.grid .images-section img:nth-child(2) {
+    width: 30vw;
+}
+
+.register-container.ui.grid .images-section .image-text {
+    margin-top: -0.5vh;
+    font-size: 1vw;
+}
+
+.register-container.ui.grid .info-form {
+    padding: 0.5vw 2vw;
+    width: 100%;
+    margin: 0px;
+    top: 0px;
+    right: 0px;
+    text-align: left;
+    font-size: 0.7vw;
+    float: left;
+    border-width: 0px;
+    overflow: hidden;
+}
+
+.register-container.ui.grid .info-form.ui.form .inline.field{
+    margin: 0 0 5px;
+}
+
+.register-container.ui.grid .info-form .fields,
+.register-container.ui.grid .info-form .inline.field {
+    width: 100%;
+}
+
+.register-container.ui.grid .info-form .inline.field label {
+    width: 35%;
+    text-align: right;
+}
+
+.register-container.ui.grid .info-form .inline.field .ui.input,
+.register-container.ui.grid .info-form.ui.form .inline.field select {
+    width: 60%;
+    height: 25px;
+    font-size: 0.8vw;
+}
+
+.register-container.ui.grid .info-form .inline.field .birth-fields,
+.register-container.ui.grid .info-form .inline.field .age-fields,
+.register-container.ui.grid .info-form .inline.field .units-fields,
+.register-container.ui.grid .info-form .inline.field .card-expiration-section{
+    width: 70%;
+    display: inline;
+}
+
+.register-container.ui.grid .info-form .inline.field .card-expiration-section select:first-child{
+    width: 7.8vw;
+    display: inline;
+    margin-right: 0.3vw;
+    height: 30px;
+    font-size: 0.8vw;
+    margin-top: 0vh;
+    margin-bottom: 0vh;
+}
+
+.register-container.ui.grid .info-form .inline.field .card-expiration-section select:nth-child(2){
+    width: 7.8vw;
+    margin-right: 0.3vw;
+    margin-left: 0.3vw;
+    display: inline;
+    height: 30px;
+    font-size: 0.8vw;
+    margin-top: 0vh;
+    margin-bottom: 0vh;
+}
+
+.register-container.ui.grid .info-form .payment-section{
+    margin-left: 2vw;
+    margin-bottom: 0.5vw;
+}
+
+.register-container.ui.grid .info-form .payment-section img {
+    width: 10vw;
+    margin-right: 0.5vw;
+}
+
+.register-container.ui.grid .info-form .payment-section p{
+    color: #ff0000;
+}
+
+.register-container.ui.grid .info-form hr {
+    width: 93%;
+    margin-right: 3%;
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+}
+
+.register-container.ui.grid .info-form .inline.field .units-fields .ui.input:first-child {
+    width: 6.9vw;
+    margin-left: 0vw;
+    margin-right: 0.5vw;
+    font-size: 0.8vw;
+}
+
+.register-container.ui.grid .info-form .inline.field .units-fields .ui.input:nth-child(2) {
+    width: 6.9vw;
+    margin-left: 0.5vw;
+    margin-right: 0.5vw;
+    font-size: 0.8vw;
+}
+
+.register-container.ui.grid .info-form .inline.field .age-fields .ui.input {
+    width: 56%;
+    margin-right: 0.3vw;
+}
+
+.register-container.ui.grid .info-form .inline.field .birth-fields .ui.input:first-child {
+    width: 5.5vw;
+    margin-left: 0vw;
+    margin-right: 0.3vw;
+    font-size: 0.8vw;
+}
+
+.register-container.ui.grid .info-form .inline.field .birth-fields .ui.input:nth-child(2) {
+    width: 4.6vw;
+    margin-left: 0.3vw;
+    margin-right: 0.3vw;
+    font-size: 0.8vw;
+}
+
+.register-container.ui.grid .info-form .inline.field .birth-fields .ui.input:nth-child(3) {
+    width: 4.6vw;
+    margin-left: 0.3vw;
+    margin-right: 0.3vw;
+    font-size: 0.8vw;
+}
+
+.register-container.ui.grid .extra-info {
+    padding: 0;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 1vh;
+    border-width: 0px;
+    width: 90%;
+    top: 0px;
+    right: 0px;
+    overflow: hidden;
+    text-align: left;
+    font-size: 0.8vw;
+}
+
+.register-container.ui.grid .extra-info .profile-photo-section .all-images-section {
+    display: flex;
+    margin-top: 2vh;
+}
+
+.register-container.ui.grid .extra-info .profile-photo-section .header-text {
+    text-align: center;
+}
+
+.register-container.ui.grid .extra-info .profile-photo-section .header-text p {
+    display: inline;
+    color: #ff0000;
+}
+
+.register-container.ui.grid .extra-info .profile-photo-section .one-image {
+    width: 16.66%;
+    text-align: center;
+}
+
+.register-container.ui.grid .extra-info .profile-photo-section .one-image.round .height {
+    height: 8vw;
+}
+
+.register-container.ui.grid .extra-info .profile-photo-section .one-image.round .main-image {
+    width: 6vw;
+    height: 6vw;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.register-container.ui.grid .extra-info .profile-photo-section .one-image .main-image {
+    width: 6vw;
+    height: 8vw;
+    object-fit: cover;
+}
+
+.register-container.ui.grid .extra-info .profile-photo-section .one-image.red p {
+    color: #ff0000;
+}
+
+.register-container.ui.grid .extra-info .profile-photo-section .warning-text {
+    text-align: center;
+    padding-top: 1vw;
+}
+
+.register-container.ui.grid .extra-info .profile-photo-section .final-section {
+    display: flex;
+    padding: 1vw;
+    margin: 0;
+    border-width: 0px;
+    width: 100%;
+    top: 0px;
+    right: 0px;
+    overflow: hidden;
+    text-align: left;
+    font-size: 0.8vw;
+    float: left;
+}
+
+.register-container.ui.grid .extra-info .profile-photo-section .final-section .text-area-section {
+    width: 72%;
+    font-size: 1vw;
+}
+
+.register-container.ui.grid .extra-info .profile-photo-section .final-section .text-area-section p {
+    color: #ff0000;
+    display: inline;
+}
+
+.register-container.ui.grid .extra-info .profile-photo-section .final-section .text-area-section textarea {
+    width: 90%;
+    height: 19.5vh;
+    resize: none;
+    font-size: 1vw;
+}
+
+.register-container.ui.grid .extra-info .profile-photo-section .final-section .actions-section {
+    width: 24%;
+    margin-top: 4.5vh;
+    text-align: center;
+}
+
+.register-container.ui.grid .extra-info .profile-photo-section .final-section .actions-section a img {
+    width: 15vw;
+}
+
+.register-container.ui.grid .extra-info .profile-photo-section .final-section .actions-section p {
+    font-size: 1vw;
+}
+
+.register-container.ui.grid .extra-info .profile-photo-section .final-section .actions-section .login-image {
+    width: 10vw;
+    margin-top: 2vh;
+    margin-bottom: 0vw;
+    margin-right: 2vw;
+    cursor: pointer
 }

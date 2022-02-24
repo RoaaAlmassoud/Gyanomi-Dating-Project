@@ -6,8 +6,10 @@ class MainLayout extends Component {
     constructor(props) {
         super(props);
         let pathName = props ? props.props.pathName.substring(1) : 'home';
+        let showFooter = pathName !== 'register';
         this.state = {
             activeItem: pathName !== 'home' ? pathName : 'home',
+            showFooter: showFooter
         }
     }
 
@@ -26,7 +28,11 @@ class MainLayout extends Component {
                 <div>
                     {this.props.children}
                 </div>
-                <Footer/>
+                {
+                    this.state.showFooter ?
+                        <Footer/>
+                        : null
+                }
             </div>
         );
     }
