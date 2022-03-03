@@ -1,11 +1,10 @@
 import React, {Component} from "react"
 import MainLayout from './components/main-layout/main-layout'
-import TopG00 from './components/home/top-g00'
-import TopM00 from './components/home/top-m00'
-import FemaleComponent from './components/profile-details/female-component'
-import MaleComponent from './components/profile-details/male-component'
+import Index from './components/index/index'
+import TopG00 from './components/home/src/top-g00'
+import TopM00 from './components/home/src/top-m00'
+import ProfileComponent from './components/profile-details/src/profile-component'
 import Register from './components/register/register'
-//import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 export default class App extends Component {
@@ -35,16 +34,17 @@ export default class App extends Component {
                     </Routes>*/}
 
                     <Switch>
+                        <Route exact path="/"
+                               render={(props) => <Index {...props}/>}/>
                         <Route exact path="/top_g00"
                                render={(props) => <TopG00 {...props}/>}/>
                         <Route exact path="/top_m00"
                                render={(props) => <TopM00 {...props}/>}/>
-                        <Route exact path="/pg10001"
-                               render={(props) => <FemaleComponent {...props}/>}/>
-                        <Route exact path="/pm10001"
-                               render={(props) => <MaleComponent {...props}/>}/>
                         <Route exact path="/register"
                                render={(props) => <Register {...props}/>}/>
+                        <Route exact path="/:id"
+                               render={(props) => <ProfileComponent {...props}/>}/>
+
                     </Switch>
                 </MainLayout>
 

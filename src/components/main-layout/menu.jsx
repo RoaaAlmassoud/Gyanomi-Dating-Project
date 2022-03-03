@@ -24,7 +24,7 @@ function Menu() {
                 <img src={"images/rogo.png"} alt={"img"}/>
                 <img src={"images/area.png"} alt={"img"}/>
                 <select>
-                    <option value="alea00" selected>全国版</option>
+                    <option value="alea00" defaultValue>全国版</option>
                     <option label="" disabled="disabled"/>
                     <option label="" disabled="disabled"/>
                     <option value="" disabled="disabled">{'///// 東北・北海道エリア'}</option>
@@ -94,7 +94,7 @@ function Menu() {
 
             </div>
             <div className={'right-menu'}>
-                ようこそ　田中 信二 さん　アカウントID = m10001　マイページ
+                {/*ようこそ　田中 信二 さん　アカウントID = m10001　マイページ*/}
                 <img className={'first-menu'} src={"images/bt_menutop02.png"} alt={'img'}/>
                 <img className={'second-menu'} src={maleImage} alt={'img'}/>
                 <img id="Change_Image" src={"images/m_01.png"}  alt={'img'}/>

@@ -3,9 +3,8 @@ import {Grid, Form, Input, TextArea} from 'semantic-ui-react'
 
 export default class Register extends React.Component {
     constructor(props) {
-        console.log('props: ', props, window)
         super(props);
-        this.gender = window.name
+        this.gender = window.name;
         this.images = [
             {
                 src: `images/register-images/talk_icon_${this.gender}.jpg`,
@@ -286,7 +285,7 @@ export default class Register extends React.Component {
                                             <label>カード有効期限：</label>
                                             <div className={'card-expiration-section'}>
                                                 <select>
-                                                    <option label="" disabled="disabled" selected=""></option>
+                                                    <option label="" disabled="disabled" selected="">{''}</option>
                                                     <option value="01">01</option>
                                                     <option value="02">02</option>
                                                     <option value="03">03</option>
@@ -302,7 +301,7 @@ export default class Register extends React.Component {
                                                 </select>
                                                 月 /
                                                 <select>
-                                                    <option label="" disabled="disabled" selected=""></option>
+                                                    <option label="" disabled="disabled" selected="">{''}</option>
                                                     <option value="21">21</option>
                                                     <option value="22">22</option>
                                                     <option value="23">23</option>
@@ -349,12 +348,12 @@ export default class Register extends React.Component {
                                             return <div className={`one-image ${index === 0 ? 'round' : ''}
                                             ${oneImage.color === 'red' ? 'red' : ''}`}>
                                                 <div className={`${index === 0 ? 'height' : ''}`}>
-                                                    <img className={'main-image'} src={oneImage.src}/>
+                                                    <img className={'main-image'} src={oneImage.src} alt={'main-image'}/>
                                                 </div>
                                                 <p>{oneImage.text}</p>
-                                                <img src="images/register-images/sentaku01.png"
+                                                <img src="images/register-images/sentaku01.png" alt={'first-image'}
                                                      style={{width: '55%', marginRight: '10%', cursor: 'pointer'}}/>
-                                                <img src="images/register-images/sentaku02.png"
+                                                <img src="images/register-images/sentaku02.png" alt={'second-image'}
                                                      style={{width: '10%', cursor: 'pointer'}}/>
                                             </div>
                                         })

@@ -1,7 +1,7 @@
 import React from 'react';
-import {Grid, Divider} from 'semantic-ui-react'
-import Menu from '../main-layout/menu'
-import SideMenu from '../main-layout/side-menu'
+import {Grid} from 'semantic-ui-react'
+import Menu from '../../main-layout/menu'
+import SideMenu from '../../main-layout/side-menu'
 
 export default class FemaleComponent extends React.Component {
 
@@ -37,18 +37,18 @@ export default class FemaleComponent extends React.Component {
 
 
     render() {
-        let profileData = this.profileData
+        let profileData = this.profileData;
         return (
             <div className={'main-menu-section'}>
                 <Menu/>
                 <Grid className={'profile-details-grid'}>
                     <Grid.Row>
                         <Grid.Column computer={4} tablet={4} mobile={4}>
-                            <img className={'main-image'} src={'images/column-images/1.jpg'}/>
+                            <img className={'main-image'} src={'images/column-images/1.jpg'} alt={'main-image'}/>
                             <div className={'images-section'}>
                                 {
                                     profileData.images.map((img) => {
-                                        return <img src={img}/>
+                                        return <img src={img} alt={'profile-image'}/>
                                     })
                                 }
                             </div>
@@ -64,7 +64,7 @@ export default class FemaleComponent extends React.Component {
                                 <div className={'profile-header-section'}>
                                     <div className={'first-header'}>
                                         <p className={'user-name'}>{this.profileData.name}</p>
-                                        <img src={'images/profile-page-images/mibunkakunin.png'}/>
+                                        <img src={'images/profile-page-images/mibunkakunin.png'} alt={'text-image'}/>
                                         <p className={'colored-label'}>週間人気 全国 35位：広島県 9位</p>
                                         <div className={'under-image-text'}>週間合計POINT = プロフィールページアクセス数 + ツイート投稿回数 +
                                             ツイート閲覧者数
@@ -73,9 +73,9 @@ export default class FemaleComponent extends React.Component {
                                         </div>
                                     </div>
                                     <div className={'second-header'}>
-                                        <img className={'like-image'} src={"images/profile-page-images/iine.png"}/>
+                                        <img className={'like-image'} src={"images/profile-page-images/iine.png"} alt={'like-image'}/>
                                         <span>0</span>
-                                        <img className={'report-image'} src={"images/profile-page-images/ihan.png"}/>
+                                        <img className={'report-image'} src={"images/profile-page-images/ihan.png"} alt={'report-image'}/>
                                         <p className={'number-text'}>女性登録 ID = g10001</p>
                                         <div className={'point'}>先週 合計獲得POINT ＝ 214 pt</div>
                                     </div>
@@ -112,7 +112,7 @@ export default class FemaleComponent extends React.Component {
                                 </div>
                                 <div className={'details-section'}>
                                     <div className={'image-details'}>
-                                        <img src={'images/profile-page-images/tw.png'}/>
+                                        <img src={'images/profile-page-images/tw.png'} alt={'tweet-image'}/>
                                     </div>
                                     <div className={'bottom-section'}>
                                         <div className={'text-section-details'}>
@@ -126,7 +126,7 @@ export default class FemaleComponent extends React.Component {
                                             期待してくださいね！！
                                         </div>
                                         <div className={'chat-section'}>
-                                            <img src={"images/profile-page-images/okuru.png"}/>
+                                            <img src={"images/profile-page-images/okuru.png"} alt={'chat-image'}/>
                                         </div>
                                     </div>
 

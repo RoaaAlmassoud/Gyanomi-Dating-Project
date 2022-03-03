@@ -1,12 +1,15 @@
 import React from 'react';
 import {Grid} from 'semantic-ui-react'
-import Menu from '../main-layout/menu'
-import SideMenu from '../main-layout/side-menu'
+import Menu from '../../main-layout/menu'
+import SideMenu from '../../main-layout/side-menu'
+import {prefecturesList} from "../../../utils/static-data";
+import ProfileApi from "../api/profile-api"
 
 export default class MaleComponent extends React.Component {
 
     constructor(props) {
         super(props);
+        this.profileApi = new ProfileApi(this);
         this.profileData = {
             images: [
                 'images/column-images/01.jpg',
@@ -33,16 +36,45 @@ export default class MaleComponent extends React.Component {
         }
     }
 
+    async componentDidMount() {
+        const response = await this.profileApi.getProfileDetail({isMale: 0});
+        this.setState({
+            loading: false,
+        });
+        if (response.code === 0) {
+            let columnsData = this.state.columnsData;
+            let columnsNames = ['top', 'recent', 'tweets'];
+            columnsNames.map((column) => {
+                columnsData[column] = response.data? response.data[column].map((item, index) => {
+                    let renderedObject = column === 'tweets' ? item.user: item;
+                    let headerText = column === 'top'? `先週合計 ${response.data[column].length-index} pt 獲得`:
+                        column === 'recent'? `${renderedObject.created_at? renderedObject.created_at.split('T')[0]: ''} 新規登録`:
+                            `${renderedObject.created_at? renderedObject.created_at.split('T')[0]: ''} / 
+                            ${renderedObject.created_at? renderedObject.created_at.split('T')[1].substring(0, 5): ''} 投稿`;
+                    return {
+                        profileImage: `http://api.gyanomi.com/${renderedObject.icon_image}`,
+                        header: headerText,
+                        info: `${renderedObject.name}, ${prefecturesList.find( a => a.value === renderedObject.female.prefecture)?
+                            prefecturesList.find( a => a.value === renderedObject.female.prefecture).text: ''}`,
+                        age: `${renderedObject.female.age} years old`
+                    }
+                }) : []
+            });
+
+            this.setState({columnsData: columnsData})
+        }
+    }
+
 
     render() {
-        let profileData = this.profileData
+        let profileData = this.profileData;
         return (
             <div className={'main-menu-section'}>
                 <Menu/>
                 <Grid className={'profile-details-grid'}>
                     <Grid.Row>
                         <Grid.Column computer={4} tablet={4} mobile={4}>
-                            <img className={'main-image'} src={'images/column-images/01.jpg'}/>
+                            <img className={'main-image'} src={'images/column-images/01.jpg'} alt={'main-image'}/>
                             <div className={'images-section'}>
                                 {
                                     profileData.images.map((img) => {
@@ -62,15 +94,15 @@ export default class MaleComponent extends React.Component {
                                 <div className={'profile-header-section'}>
                                     <div className={'first-header'}>
                                         <p className={'user-name'}>{this.profileData.name}</p>
-                                        <img src={'images/profile-page-images/mibunkakunin.png'}/>
+                                        <img src={'images/profile-page-images/mibunkakunin.png'} alt={'text-image'}/>
                                         <p className={'colored-label'}>週間人気　全国 65位：愛知県 12位</p>
                                         <div className={'under-image-text'}>週間合計POINT = プロフィールページアクセス数 + ツイート投稿回数 + ツイート閲覧者数 + いいね数
                                         </div>
                                     </div>
                                     <div className={'second-header'}>
-                                        <img className={'like-image'} src={"images/profile-page-images/iine.png"}/>
+                                        <img className={'like-image'} src={"images/profile-page-images/iine.png"} alt={'like-image'}/>
                                         <span>0</span>
-                                        <img className={'report-image'} src={"images/profile-page-images/ihan.png"}/>
+                                        <img className={'report-image'} src={"images/profile-page-images/ihan.png"} alt={'report-image'} />
                                         <p className={'number-text'}>男性登録 ID = m10001</p>
                                         <div className={'point'}>先週 合計獲得POINT ＝ 364 pt</div>
                                     </div>
@@ -107,7 +139,7 @@ export default class MaleComponent extends React.Component {
                                 </div>
                                 <div className={'details-section'}>
                                     <div className={'image-details'}>
-                                        <img src={'images/profile-page-images/tw.png'}/>
+                                        <img src={'images/profile-page-images/tw.png'} alt={'tweet-image'}/>
                                     </div>
                                     <div className={'bottom-section'}>
                                         <div className={'text-section-details'}>
@@ -122,7 +154,7 @@ export default class MaleComponent extends React.Component {
                                             期待してますね！！
                                         </div>
                                         <div className={'chat-section'}>
-                                            <img src={"images/profile-page-images/okuru.png"}/>
+                                            <img src={"images/profile-page-images/okuru.png"} alt={'chat-image'}/>
                                         </div>
                                     </div>
 
