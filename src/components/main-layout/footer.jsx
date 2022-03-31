@@ -1,33 +1,65 @@
 import React from 'react';
+import AddTweet from "../tweet/src/add-tweet"
 
-function Footer() {
+export default class Footer extends React.Component {
 
-    let pathname = window.location.pathname;
-    let registerImage = pathname === ('/top_m00' || '/pm10001')? 'images/touroku_02.png': 'images/touroku_01.png';
-    let secondRegisterImage = pathname === ('/top_m00' || '/pm10001')? 'images/touroku_04.png': 'images/touroku_03.png';
-    if(pathname === '/top_m00' || pathname === '/pm10001'){
-        window.name = 'female'
-    } else {
-        window.name ='male'
+    constructor(props) {
+        super(props);
+        this.tweetModalRef = React.createRef();
+        let pathname = window.location.pathname;
+        this.registerImage = pathname === ('/top_m00' || '/pm10001') ? 'images/touroku_02.png' : 'images/touroku_01.png';
+        this.secondRegisterImage = pathname === ('/top_m00' || '/pm10001') ? 'images/touroku_04.png' : 'images/touroku_03.png';
+        if (pathname === '/top_m00') {
+            window.name = 'female'
+        } else {
+            window.name = 'male'
+        }
     }
 
-    return (
-        <div className={'footer-section'}>
-            <div className={'left-footer'}>
-                <img onClick={() => {window.location= '/register'}} src={registerImage} alt={'img'}/>
-                <img  onClick={() => {window.location= '/register'}} src={secondRegisterImage} alt={'img'}/>
+    openTweetModal = () => {
+        this.tweetModalRef.current.show();
+    }
+
+    render() {
+        return (
+            <div className={'footer-section'} id={'footer-section'}>
+                {
+                    !localStorage.getItem('token') ?
+                        <div className={'left-footer'}>
+                            <img onClick={() => {
+                                window.location = '/register'
+                            }} src={this.registerImage} alt={'img'}/>
+                            <img onClick={() => {
+                                window.location = '/register'
+                            }} src={this.secondRegisterImage} alt={'img'}/>
+                        </div>
+                        : null
+                }
+
+                <div className={'middle-footer'}>
+                    {
+                        localStorage.getItem('token') ?
+                            <>
+                                <p>← お誘いツイートを投稿するには新規アカウント登録が必要です</p>
+                                <img onClick={() =>this.openTweetModal()}
+                                     src={"/images/bt_kakikomi.png"} alt={'img'}/>
+                            </>
+                            : null
+                    }
+
+                </div>
+                <div className={'right-footer'}>
+                    {
+                        localStorage.getItem('token') ?
+                            <>
+                                <img src={"/images/bt_toi.png"} alt={'img'}/>
+                                <img src={"/images/bt_taikai.png"} alt={'img'}/>
+                            </>
+                            : null
+                    }
+                </div>
+                <AddTweet ref={this.tweetModalRef} props={this}/>
             </div>
-            <div className={'middle-footer'}>
-                <p>←　お誘いツイートを投稿するには新規アカウント登録が必要です</p>
-                <img src={"images/bt_kakikomi.png"} alt={'img'}/>
-            </div>
-            <div className={'right-footer'}>
-                <img src={"images/bt_toi.png"} alt={'img'}/>
-                <img src={"images/bt_taikai.png"} alt={'img'}/>
-            </div>
-        </div>
-    );
+        );
+    }
 }
-
-
-export default Footer

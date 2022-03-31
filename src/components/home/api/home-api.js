@@ -7,6 +7,6 @@ export default class HomeApi {
     }
 
     getHome = async (body) => {
-        return await AxiosApi.call(body, `/home?is_male=${body.isMale}`, 'get');
+        return await AxiosApi.call(body, `home?is_male=${body.isMale}`, 'get');
     }
 }

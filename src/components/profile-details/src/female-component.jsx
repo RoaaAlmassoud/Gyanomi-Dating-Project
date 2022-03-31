@@ -40,7 +40,7 @@ export default class FemaleComponent extends React.Component {
         let profileData = this.profileData;
         return (
             <div className={'main-menu-section'}>
-                <Menu/>
+                <Menu props={this.props}/>
                 <Grid className={'profile-details-grid'}>
                     <Grid.Row>
                         <Grid.Column computer={4} tablet={4} mobile={4}>

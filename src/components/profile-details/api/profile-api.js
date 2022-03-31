@@ -7,6 +7,6 @@ export default class ProfileApi {
     }
 
     getProfileDetail = async (body) => {
-        return await AxiosApi.call(body, `/user/${body.id}`, 'get');
+        return await AxiosApi.call(body, `user/${body.id}`, 'get');
     }
 }

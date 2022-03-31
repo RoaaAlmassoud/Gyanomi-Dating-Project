@@ -26,18 +26,18 @@ export default class TopM00 extends React.Component {
         this.setState({
             loading: false,
         });
-        if (response.code === 0) {
+        if (response.data) {
             let columnsData = this.state.columnsData;
             let columnsNames = ['top', 'recent', 'tweets'];
             columnsNames.map((column) => {
-                columnsData[column] = response.data ? response.data[column].map((item, index) => {
+                columnsData[column] = response.data ? response.data.data[column].map((item, index) => {
                     let renderedObject = column === 'tweets' ? item.user : item;
-                    let headerText = column === 'top' ? `先週合計 ${response.data[column].length - index} pt 獲得` :
+                    let headerText = column === 'top' ? `先週合計 ${response.data.data[column].length - index} pt 獲得` :
                         column === 'recent' ? `${renderedObject.created_at ? renderedObject.created_at.split('T')[0] : ''} 新規登録` :
                             `${renderedObject.created_at ? renderedObject.created_at.split('T')[0] : ''} / 
                             ${renderedObject.created_at ? renderedObject.created_at.split('T')[1].substring(0, 5) : ''} 投稿`;
                     return {
-                        profileImage: `http://api.gyanomi.com/${renderedObject.icon_image}`,
+                        profileImage: `${renderedObject.icon_image? !renderedObject.icon_image.includes('http://api.gyanomi.com/')?'http://api.gyanomi.com/': '': ''}${renderedObject.icon_image}`,
                         header: headerText,
                         info: `${renderedObject.name}, ${prefecturesList.find(a => a.value === renderedObject.male.prefecture) ?
                             prefecturesList.find(a => a.value === renderedObject.male.prefecture).text : ''}`,
@@ -55,7 +55,7 @@ export default class TopM00 extends React.Component {
     render() {
         return (
             <div className={'main-menu-section'}>
-                <Menu/>
+                <Menu props={this.props}/>
                 <Grid>
                     <Grid.Row>
                         {

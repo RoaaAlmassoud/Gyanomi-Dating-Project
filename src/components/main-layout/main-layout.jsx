@@ -6,10 +6,10 @@ import Helper from '../../utils/helper'
 class MainLayout extends Component {
     constructor(props) {
         super(props);
-        let pathName = props ? props.props.pathName.substring(1) : 'home';
-        let showFooter = pathName !== 'register' && !Helper.emptyString(pathName);
+        this.pathName = props ? props.props.pathName.substring(1) : 'home';
+        let showFooter = (this.pathName !== 'register' && !Helper.emptyString(this.pathName));
         this.state = {
-            activeItem: pathName !== 'home' ? pathName : 'home',
+            activeItem: this.pathName !== 'home' ? this.pathName : 'home',
             showFooter: showFooter
         }
     }

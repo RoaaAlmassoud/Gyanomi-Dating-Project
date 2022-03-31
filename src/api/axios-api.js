@@ -3,11 +3,11 @@ import Helper from '../utils/helper'
 
 export default class AxiosApi {
 
-    static ApiURL = "http://api.gyanomi.com/api";
+    static ApiURL = "http://api.gyanomi.com/api/";
 
     static call = async (requestBody, path, method, formDataBody= false) => {
         let url = path ? `${this.ApiURL}${path}` : this.ApiURL;
-        let accessToken = localStorage.getItem('accessToken');
+        let accessToken = localStorage.getItem('token');
         let headers = {
             "Content-Type": formDataBody? "multipart/form-data" : "application/json"
         };
@@ -20,16 +20,16 @@ export default class AxiosApi {
             const response = await axios[method](url
                 , method === 'get' || method === 'delete'? {
                     headers: headers,
-                    timeout: 12000
+                    timeout: 1200000
                 } : requestBody, {
                     headers: headers,
-                    timeout: 12000
+                    timeout: 1200000
                 }, {crossDomain: true});
 
             return Helper.getResponseData(response);
         } catch (e) {
             if (e.response) {
-                return e.response
+                return Helper.getResponseData(e.response);
             } else
                 return e;
         }

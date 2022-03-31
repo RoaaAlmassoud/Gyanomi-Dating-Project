@@ -13,14 +13,14 @@ export default class HelperFunctions {
 
         let result = {};
 
-        if (response.data) {
+        if (response.data && response.status === 200 && response.data.code === 0) {
             // const firstKey = Object.keys(data);
             // return data[firstKey];
-            result = response.data;
+            result['data'] = response.data;
         }
 
-        if (response.data && response.data.errors) {
-            result = response.data.errors[0].message;
+        if (response.data && response.data.code !== 0) {
+            result = response.data;
 
         }
 
@@ -38,6 +38,18 @@ export default class HelperFunctions {
 
     static emptyString(value) {
         return (typeof value === "undefined" || typeof value === 'undefined' || typeof value === undefined || value === null || value === '' || value === "" || value.length === 0 || value === 'undefined');
+    }
+
+    static getMonthName(id) {
+        const monthNames = ["January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+        ];
+        if(monthNames[id]){
+            return monthNames[id]
+        } else {
+            return null
+        }
+
     }
 
 }

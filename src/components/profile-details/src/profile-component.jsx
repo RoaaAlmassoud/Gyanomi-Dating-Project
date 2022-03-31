@@ -4,6 +4,7 @@ import Menu from '../../main-layout/menu'
 import SideMenu from '../../main-layout/side-menu'
 import {prefecturesList} from "../../../utils/static-data";
 import ProfileApi from "../api/profile-api"
+import Helper from "../../../utils/helper";
 
 export default class ProfileComponent extends React.Component {
 
@@ -22,7 +23,8 @@ export default class ProfileComponent extends React.Component {
                 labeledText: "",
                 totalPoint: "",
                 totalPointEx: "",
-                info: {}
+                info: {},
+                lastTweet: {}
             }
         };
 
@@ -33,15 +35,15 @@ export default class ProfileComponent extends React.Component {
         this.setState({
             loading: false,
         });
-        if (response.code === 0) {
+        if (response.data) {
             let {profileData, isMale} = this.state;
-            let user = response.data.user;
+            let user = response.data.data.user;
             let userInfo = user.is_male ? user.male : user.female;
             profileData.images.push(
-                `http://api.gyanomi.com/${user.icon_image}`,
-                `http://api.gyanomi.com/${user.top_image}`,
-                `http://api.gyanomi.com/${user.image1}`,
-                `http://api.gyanomi.com/${user.id_image}`,
+                `${user.icon_image ? !user.icon_image.includes('http://api.gyanomi.com/') ? 'http://api.gyanomi.com/' : '' : ''}${user.icon_image}`,
+                `${user.top_image ? !user.top_image.includes('http://api.gyanomi.com/') ? 'http://api.gyanomi.com/' : '' : ''}${user.top_image}`,
+                `${user.image1 ? !user.image1.includes('http://api.gyanomi.com/') ? 'http://api.gyanomi.com/' : '' : ''}${user.image1}`,
+                `${user.id_image ? !user.id_image.includes('http://api.gyanomi.com/') ? 'http://api.gyanomi.com/' : '' : ''}${user.id_image}`,
             );
 
             profileData.PRComment = user.promotion_text;
@@ -53,6 +55,21 @@ export default class ProfileComponent extends React.Component {
                     prefecturesList.find(a => a.value === userInfo.prefecture).text : "",
                 specificOccupation: userInfo.occupation
             };
+            if (user.lastTweet) {
+                let lastTweet = user.lastTweet;
+                profileData.lastTweet = {
+                    created_at: lastTweet.created_at ? ` ${lastTweet.created_at.split('T')[0].replaceAll('-', ',')}  ${lastTweet.created_at.split('T')[1].substring(1, 5)}` : '',
+                    tweetDate: lastTweet.month && lastTweet.day ?
+                        `${lastTweet.month}月${lastTweet.day}日 ${lastTweet.start_hour}:00  ～ ${lastTweet.end_hour}:00  終了予定` : '',
+                    day: lastTweet.day,
+                    end_hour: lastTweet.end_hour,
+                    month: (lastTweet.month),
+                    place: lastTweet.place ? lastTweet.place : '',
+                    start_hour: lastTweet.start_hour,
+                    text: lastTweet.text,
+                }
+            }
+
             if (isMale) {
                 profileData.info.annualIncome = `${userInfo.annual_income}万円以上`;
                 profileData.info.drinkingAmount = `${userInfo.thank_you_amount}万円 / １時間あたり`;
@@ -88,7 +105,7 @@ export default class ProfileComponent extends React.Component {
         let {profileData, loading, mainImage, isMale} = this.state;
         return (
             <div className={'main-menu-section'}>
-                <Menu/>
+                <Menu props={this.props}/>
                 <Grid className={'profile-details-grid'}>
                     {
                         loading ?
@@ -96,20 +113,22 @@ export default class ProfileComponent extends React.Component {
                             :
                             <Grid.Row>
                                 <Grid.Column computer={4} tablet={4} mobile={4}>
-                                    <img className={'main-image'} src={mainImage} alt={'main-image'}/>
-                                    <div className={'images-section'}>
-                                        {
-                                            profileData.images.map((img) => {
-                                                return <img onClick={() => this.renderMainImage(img)}
-                                                            src={img} alt={'profile-image'}/>
-                                            })
-                                        }
-                                    </div>
-                                    <div className={'pr-section'}>
-                                        <p>自己PR コメント</p>
-                                        <p>{profileData.PRComment}</p>
-                                        {/*<p>会社経営してます。<br/>接待の飲みが大変多いので、可愛い女の子達と一緒に過ごせたらうれしいです。<br/>宜しくお願いします。
+                                    <div>
+                                        <img className={'main-image'} src={mainImage} alt={'main-image'}/>
+                                        <div className={'images-section'}>
+                                            {
+                                                profileData.images.map((img) => {
+                                                    return <img onClick={() => this.renderMainImage(img)}
+                                                                src={img} alt={'profile-image'}/>
+                                                })
+                                            }
+                                        </div>
+                                        <div className={'pr-section'}>
+                                            <p>自己PR コメント</p>
+                                            <p>{profileData.PRComment}</p>
+                                            {/*<p>会社経営してます。<br/>接待の飲みが大変多いので、可愛い女の子達と一緒に過ごせたらうれしいです。<br/>宜しくお願いします。
                                 </p>*/}
+                                        </div>
                                     </div>
                                 </Grid.Column>
                                 <Grid.Column computer={9} tablet={9} mobile={9}>
@@ -117,7 +136,8 @@ export default class ProfileComponent extends React.Component {
                                         <div className={'profile-header-section'}>
                                             <div className={'first-header'}>
                                                 <p className={'user-name'}>{profileData.name}</p>
-                                                <img src={'images/profile-page-images/mibunkakunin.png'} alt={'text-image'}/>
+                                                <img src={'images/profile-page-images/mibunkakunin.png'}
+                                                     alt={'text-image'}/>
                                                 <p className={'colored-label'}>週間人気 全国 65位：愛知県 12位</p>
                                                 <div className={'under-image-text'}>週間合計POINT = プロフィールページアクセス数 +
                                                     ツイート投稿回数 + ツイート閲覧者数 + いいね数
@@ -190,36 +210,29 @@ export default class ProfileComponent extends React.Component {
                                         </div>
                                         <div className={'details-section'}>
                                             <div className={'image-details'}>
-                                                <img src={'images/profile-page-images/tw.png'} alt={'tweet-image'}/>
+                                                {
+                                                    !Helper.isEmpty(profileData.lastTweet) ?
+                                                        <img src={'images/profile-page-images/tw.png'}
+                                                             alt={'tweet-image'}/>
+                                                        : null
+                                                }
                                             </div>
                                             <div className={'bottom-section'}>
-                                                {
-                                                    isMale?
-                                                        <div className={'text-section-details'}>
-                                                            投稿日時：2021年10月02日　15:34<br/>
-                                                            待ち合わせ希望日時：10月02日　19:00 ～ 21:00　終了予定<br/>
-                                                            場所：名駅周辺<br/><br/>
-                                                            今夜、19時ごろから男性社長仲間３人で飲みます！！<br/>
-                                                            友達も誘えるカワイイ女の子いますか？？？<br/>
-                                                            ２時間希望<br/>
-                                                            お礼はいつもより多く２時間で15万円出すし、往復タク代と、楽しかったらチップも渡します！！<br/>
-                                                            期待してくださいね！！<br/>
-                                                            期待してますね！！
-                                                        </div>
-                                                        :
-                                                        <div className={'text-section-details'}>
-                                                            投稿日時：2021年10月14日 18:34<br/>
-                                                            待ち合わせ希望日時：10月16日 19:00 ～ 21:00 終了予定<br/>
-                                                            場所：広島駅周辺<br/><br/>
-                                                            今週土曜日の夜ですが、19時ごろから時間空いてるから誰か一緒に遊んでくれませんか。<br/>
-                                                            ２人きりでゆっくり時間過ごしたいです★<br/>
-                                                            ２時間～朝まで希望<br/>
-                                                            ご奉仕好きだから、盛り上げますよ！！<br/>
-                                                            期待してくださいね！！
-                                                        </div>
-                                                }
+                                                <div className={'text-section-details'}>
+                                                    {
+                                                        !Helper.isEmpty(profileData.lastTweet) ?
+                                                            <>
+                                                                <p>{`投稿日時${profileData.lastTweet.created_at}`}</p>
+                                                                <p>{`待ち合わせ希望日時： ${profileData.lastTweet.tweetDate}`}</p>
+                                                                <p>{`場所：${profileData.lastTweet.place}`}</p>
+                                                                <p>{`${profileData.lastTweet.text}`}</p>
+                                                            </>
+                                                            : null
+                                                    }
+                                                </div>
                                                 <div className={'chat-section'}>
-                                                    <img src={"images/profile-page-images/okuru.png"} alt={'chat-image'}/>
+                                                    <img src={"images/profile-page-images/okuru.png"}
+                                                         alt={'chat-image'}/>
                                                 </div>
                                             </div>
 
