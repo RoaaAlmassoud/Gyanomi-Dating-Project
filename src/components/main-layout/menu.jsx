@@ -32,7 +32,8 @@ export default class Menu extends Component {
         setInterval(this.change_image, 500);
         let pathname = window.location.pathname;
         let maleImage = localStorage.getItem('gender')?  localStorage.getItem('gender')
-        === 'female'? 'images/bt_menutop04.png' : 'images/bt_menutop03.png': '';
+        === 'female'? '/images/bt_menutop04.png' : '/images/bt_menutop03.png': '';
+
         return (
             <div className={'menu-section'}>
                 <div className={'left-menu'}>
@@ -114,14 +115,14 @@ export default class Menu extends Component {
                             <>
                                 {`ようこそ ${localStorage.getItem('name')} アカウントID = ${localStorage.getItem('accountId')}　マイページ`}
                                 <img onClick={() => this.updateAccount()}
-                                    className={'first-menu'} src={"images/bt_menutop02.png"} alt={'img'}/>
+                                    className={'first-menu'} src={"/images/bt_menutop02.png"} alt={'img'}/>
                                 <img className={'second-menu'}
                                      onClick={() => this.getDetails()}
                                      src={maleImage}
                                      alt={'img'}
                                 />
-                                <img className={'chat-image'} id="Change_Image" src={"images/m_01.png"} alt={'img'}/>
-                                <img src={"images/logout.png"} alt={'img'} className={'logout-image'}
+                                <img className={'chat-image'} id="Change_Image" src={"/images/m_01.png"} alt={'img'}/>
+                                <img src={"/images/logout.png"} alt={'img'} className={'logout-image'}
                                      onClick={() => this.props.props.history.push('/logout')}
                                 />
                             </>

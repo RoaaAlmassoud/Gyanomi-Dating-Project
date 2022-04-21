@@ -155,7 +155,9 @@ export default class SideMenu extends Component {
             localStorage.setItem('token', loginResponse.data.data.token)
             localStorage.setItem('accountId', loginResponse.data.data.user.uuid)
             localStorage.setItem('name', loginResponse.data.data.user.name)
+            localStorage.setItem('email', loginResponse.data.data.user.email)
             localStorage.setItem('gender', loginResponse.data.data.user.is_male? 'male': 'female')
+            localStorage.setItem('accountType', "user");
             window.location.reload(true)
         }
 

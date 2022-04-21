@@ -284,8 +284,8 @@ export default class AddTweet extends React.Component {
                                  alt="ツイート"
                                  onClick={() => this.addTweet()}
                             />
-                            <p>{addedText}</p>
                         </Button>
+                        <p>{addedText}</p>
                     </div>
 
                     <div className={'close-section'}>

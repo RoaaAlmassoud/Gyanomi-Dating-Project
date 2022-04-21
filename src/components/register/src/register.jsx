@@ -58,8 +58,11 @@ export default class Register extends React.Component {
     constructor(props) {
         super(props);
         this.authApi = new AuthApi(this);
-        this.gender = window.name;
+        this.pathName = props.location? props.location.pathname: '';
+        this.gender = window.name? window.name: 'male';
         this.userId = this.props ? this.props.match.params.id : '';
+        this.affiliateId = this.pathName? this.pathName.includes('register')?  props.match.params.id?
+            props.match.params.id: '': '': ''
         this.state = {
             validationErrors: {},
             showErrors: false,
@@ -134,10 +137,10 @@ export default class Register extends React.Component {
         if (footerSection) {
             footerSection.style.display = 'none';
         }
-        let returnedGender = window.name;
+        let returnedGender = window.name? window.name: 'male';
         let user = this.state.user
         let userResponse = null;
-        if (this.userId) {
+        if (this.userId && !this.affiliateId) {
             userResponse = await this.authApi.getUserById({id: this.userId});
 
             if(userResponse.data){
@@ -272,6 +275,10 @@ export default class Register extends React.Component {
                 body.image3 = response.data.data.uploads.image3 ? response.data.data.uploads.image3 : user.image3
             }
 
+            if(this.affiliateId){
+                body.affiliation_id = this.affiliateId
+            }
+
             if (user.is_male) {
                 body.male = {
                     "age": user.age,
@@ -306,11 +313,12 @@ export default class Register extends React.Component {
                     localStorage.setItem('accountId', registerResponse.data.data.user.uuid)
                     localStorage.setItem('name', user.name)
                     localStorage.setItem('gender', registerResponse.data.data.user.is_male ? 'male' : 'female')
-                }
-                if (registerResponse.data.data.user.is_male) {
-                    this.props.history.push('/top_m00')
-                } else {
-                    this.props.history.push('/top_g00')
+                    localStorage.setItem('email', registerResponse.data.data.user.email)
+                    if (registerResponse.data.data.user.is_male) {
+                        this.props.history.push('/top_m00')
+                    } else {
+                        this.props.history.push('/top_g00')
+                    }
                 }
             } else {
                 this.props.notify(true, registerResponse.message ? registerResponse.message : 'Error! please try again')
@@ -381,6 +389,15 @@ export default class Register extends React.Component {
         });
     }
 
+    changeGender = () => {
+        if(window.name === 'male'){
+            window.name = 'female'
+        } else {
+            window.name = 'male'
+        }
+        window.location.reload(true)
+    }
+
     render() {
         let {user, loaded} = this.state;
         const nameError = this.context.errorFor(this.state, 'name', null, true);
@@ -409,6 +426,7 @@ export default class Register extends React.Component {
         const hipError = this.context.errorFor(this.state, 'hip', null, true);
         const desiredAmountError = this.context.errorFor(this.state, 'desired_amount', null, true);
 
+        let gender= window.name? window.name: 'male';
         return (
             <>
                 <Dimmer active={loaded}>
@@ -790,6 +808,7 @@ export default class Register extends React.Component {
 
                                 </Form.Group>
                             </Form>
+
                         </Grid.Column>
                         <Grid.Column computer={10}>
                             <div className={'extra-info'}>
@@ -890,9 +909,18 @@ export default class Register extends React.Component {
                                     </Form>
                                 </div>
                             </div>
+
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>
+                {
+                    this.affiliateId?
+                        <div className={'register-button'} onClick={() => this.changeGender()}>
+                            <img src={`${gender === 'male'? '/images/touroku_02.png': '/images/touroku_01.png'}`}/>
+                        </div>
+                        : null
+                }
+
             </>
         )
     }

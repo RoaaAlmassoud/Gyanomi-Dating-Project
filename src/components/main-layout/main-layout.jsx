@@ -37,7 +37,7 @@ class MainLayout extends Component {
                 </div>
                 {
                     this.state.showFooter ?
-                        <Footer/>
+                        <Footer notify={this.props.notify} props={this.props}/>
                         : null
                 }
             </div>

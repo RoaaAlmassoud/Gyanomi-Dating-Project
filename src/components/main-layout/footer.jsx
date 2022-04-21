@@ -1,11 +1,18 @@
 import React from 'react';
 import AddTweet from "../tweet/src/add-tweet"
+import InquiryModal from "../main-modal/src/inquiry-modal"
+import DeleteAccountModal from "../main-modal/src/delete-account-modal"
+import {toast, ToastContainer} from "react-toastify";
+import {Icon} from "semantic-ui-react";
+import {css} from "glamor";
 
 export default class Footer extends React.Component {
 
     constructor(props) {
         super(props);
         this.tweetModalRef = React.createRef();
+        this.inquiryModalRef = React.createRef();
+        this.deleteAccountModalRef = React.createRef();
         let pathname = window.location.pathname;
         this.registerImage = pathname === ('/top_m00' || '/pm10001') ? 'images/touroku_02.png' : 'images/touroku_01.png';
         this.secondRegisterImage = pathname === ('/top_m00' || '/pm10001') ? 'images/touroku_04.png' : 'images/touroku_03.png';
@@ -18,6 +25,14 @@ export default class Footer extends React.Component {
 
     openTweetModal = () => {
         this.tweetModalRef.current.show();
+    }
+
+    openInquiryModal = () => {
+        this.inquiryModalRef.current.show();
+    }
+
+    openDeleteAccountModal = () => {
+        this.deleteAccountModalRef.current.show();
     }
 
     render() {
@@ -52,13 +67,21 @@ export default class Footer extends React.Component {
                     {
                         localStorage.getItem('token') ?
                             <>
-                                <img src={"/images/bt_toi.png"} alt={'img'}/>
-                                <img src={"/images/bt_taikai.png"} alt={'img'}/>
+                                <img src={"/images/bt_toi.png"}
+                                     alt={'img'}
+                                     onClick={() => this.openInquiryModal()}
+                                />
+                                <img src={"/images/bt_taikai.png"}
+                                     alt={'img'}
+                                     onClick={() => this.openDeleteAccountModal()}
+                                />
                             </>
                             : null
                     }
                 </div>
                 <AddTweet ref={this.tweetModalRef} props={this}/>
+                <InquiryModal ref={this.inquiryModalRef} props={this}/>
+                <DeleteAccountModal ref={this.deleteAccountModalRef} props={this}/>
             </div>
         );
     }

@@ -9,4 +9,8 @@ export default class ProfileApi {
     getProfileDetail = async (body) => {
         return await AxiosApi.call(body, `user/${body.id}`, 'get');
     }
+
+    addReport = async (body) => {
+        return await AxiosApi.call(body, `report`, 'post');
+    }
 }

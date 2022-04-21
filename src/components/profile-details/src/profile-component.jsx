@@ -5,11 +5,13 @@ import SideMenu from '../../main-layout/side-menu'
 import {prefecturesList} from "../../../utils/static-data";
 import ProfileApi from "../api/profile-api"
 import Helper from "../../../utils/helper";
+import ReportModal from "./report-modal";
 
 export default class ProfileComponent extends React.Component {
 
     constructor(props) {
         super(props);
+        this.reportModalRef = React.createRef();
         this.userId = this.props ? this.props.match.params.id : '';
         this.profileApi = new ProfileApi(this);
         this.state = {
@@ -100,6 +102,10 @@ export default class ProfileComponent extends React.Component {
         })
     };
 
+    openReportModal = () => {
+        this.reportModalRef.current.show();
+    }
+
 
     render() {
         let {profileData, loading, mainImage, isMale} = this.state;
@@ -148,7 +154,9 @@ export default class ProfileComponent extends React.Component {
                                                      src={"images/profile-page-images/iine.png"}/>
                                                 <span>0</span>
                                                 <img className={'report-image'} alt={'report-image'}
-                                                     src={"images/profile-page-images/ihan.png"}/>
+                                                     src={"images/profile-page-images/ihan.png"}
+                                                     onClick={() => this.openReportModal()}
+                                                />
                                                 <p className={'number-text'}>{`${isMale ? '男性登録' : '女性登録'} ID = ${this.userId}`}</p>
                                                 <div className={'point'}>先週 合計獲得POINT ＝ 0 pt</div>
                                             </div>
@@ -245,6 +253,7 @@ export default class ProfileComponent extends React.Component {
                             </Grid.Row>
                     }
 
+                    <ReportModal ref={this.reportModalRef} props={this}/>
                 </Grid>
             </div>
         );

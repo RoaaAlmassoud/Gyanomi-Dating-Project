@@ -5,6 +5,8 @@ import TopG00 from './components/home/src/top-g00'
 import TopM00 from './components/home/src/top-m00'
 import ProfileComponent from './components/profile-details/src/profile-component'
 import Register from './components/register/src/register'
+import Affiliate from './components/affiliate/src/affiliate'
+import All from './components/all/src/all'
 import Logout from './components/logout/logout'
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import AppContext from './context/app-context';
@@ -67,7 +69,7 @@ export default class App extends Component {
         return (
             <BrowserRouter>
                 <AppContext.Provider value={this.state}>
-                    <MainLayout props={this} key={Helper.unique()}>
+                    <MainLayout props={this} notify={this.notify} key={Helper.unique()}>
                         {/*<Routes>
                         <Route exact path="/top_g00"
                                render={(props) => {
@@ -82,20 +84,35 @@ export default class App extends Component {
 
                         <Switch>
                             <Route exact path="/"
-                                   render={(props) => <Index {...props}/>}/>
+                                   render={(props) => <Index notify={this.notify} {...props}/>}/>
                             <Route exact path="/top_g00"
-                                   render={(props) => <TopG00 {...props}/>}/>
+                                   render={(props) => <TopG00 notify={this.notify} {...props}/>}/>
                             <Route exact path="/top_m00"
-                                   render={(props) => <TopM00 {...props}/>}/>
+                                   render={(props) => <TopM00 notify={this.notify} {...props}/>}/>
                             <Route exact path="/register"
+                                   render={(props) => <Register notify={this.notify} {...props}/>}/>
+                            <Route exact path="/register/:id"
                                    render={(props) => <Register notify={this.notify} {...props}/>}/>
                             <Route exact path="/logout"
                                    render={(props) => <Logout {...props}/>}/>
                             <Route exact path="/update/:id"
                                    render={(props) => <Register notify={this.notify} {...props}/>}/>
+                            <Route exact path="/affiliate"
+                                   render={(props) => <Affiliate notify={this.notify} {...props}/>}/>
+                            <Route exact path="/top_users_g00"
+                                   render={(props) => <All notify={this.notify} {...props}/>}/>
+                            <Route exact path="/top_users_m00"
+                                   render={(props) => <All notify={this.notify} {...props}/>}/>
+                            <Route exact path="/recent_users_g00"
+                                   render={(props) => <All notify={this.notify} {...props}/>}/>
+                            <Route exact path="/recent_users_m00"
+                                   render={(props) => <All notify={this.notify} {...props}/>}/>
+                            <Route exact path="/tweets_g00"
+                                   render={(props) => <All notify={this.notify} {...props}/>}/>
+                            <Route exact path="/tweets_m00"
+                                   render={(props) => <All notify={this.notify} {...props}/>}/>
                             <Route exact path="/:id"
-                                   render={(props) => <ProfileComponent {...props}/>}/>
-
+                                   render={(props) => <ProfileComponent notify={this.notify} {...props}/>}/>
                         </Switch>
                         <ToastContainer autoClose={5000}/>
                     </MainLayout>

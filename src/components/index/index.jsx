@@ -76,7 +76,12 @@ export default class Index extends React.Component {
                             <p>Copyright (c) 2020 GAYNOMI.com All rights reserved.</p>
                         </List.Item>
                         <List.Item>
-                            <img src="images/index-images/afi.png" alt={'afi-image'}/>
+                            <img src="images/index-images/afi.png"
+                                 alt={'afi-image'}
+                                 onClick={() => {
+                                     this.imageClicked('affiliate')
+                                 }}
+                            />
                         </List.Item>
                     </List>
                 </div>

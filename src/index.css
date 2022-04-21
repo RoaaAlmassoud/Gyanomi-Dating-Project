@@ -8,7 +8,7 @@ body {
     left: 0;
     overflow: hidden;
     font-family: "Helvetica Neue", "Helvetica", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Arial", "Yu Gothic", "Meiryo", sans-serif !important;
-    color: #323232;
+    color: #323232 !important;
     background-color: #fdf0f2 !important;
     font-size: 8vw;
     font-weight: bold !important;
@@ -59,6 +59,165 @@ body select {
     height: fit-content;
 }
 
+.code-modal.ui.modal {
+    width: 95vw !important;
+    border: 1px solid #999999;
+    border-radius: 2vw;
+    text-align: center;
+    font-size: 0.8vw !important;
+}
+
+.code-modal.ui.modal > .content {
+    font-size: 0.8vw !important;
+}
+
+.code-modal.ui.modal .header-text .first-span {
+    font-weight: bold;
+    font-size: 1vw;
+}
+
+.code-modal.ui.modal .code-header-section {
+    position: relative;
+}
+
+.code-modal.ui.modal .code-header-section img {
+    position: absolute;
+    top: 0vw;
+    right: 5vw;
+    width: 8vw;
+    text-align: right;
+}
+
+.ui.modal .red-span {
+    color: #ff0000 !important;
+}
+
+.code-modal.ui.modal .content-section {
+    padding: 0;
+    border-width: 0px;
+    width: 100%;
+    height: 60vh;
+    top: 0px;
+    right: 0px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    font-size: 0.8vw;
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.code-modal.ui.modal .content-section .first .first-image,
+.code-modal.ui.modal .content-section .second .first-image {
+    width: 25vw;
+}
+
+.code-modal.ui.modal .content-section .first p {
+    margin-top: 8px;
+    margin-bottom: 1px;
+}
+
+.code-modal.ui.modal .content-section .second p {
+    margin-bottom: 1px;
+}
+
+.code-modal.ui.modal .content-section input {
+    padding-top: 0.4vw;
+    padding-bottom: 0.4vw;
+    font-size: 1vw;
+    border-radius: 2.5px;
+    border-color: #858585;
+    border-style: inset;
+    border-width: 1px;
+}
+
+.code-modal.ui.modal .content-section .first input,
+.code-modal.ui.modal .content-section .second .copy-section.first input {
+    width: 15vw;
+}
+
+.code-modal.ui.modal .content-section .copy-image {
+    width: 5vw;
+    margin-left: 1vw;
+    margin-bottom: -0.5vw;
+    cursor: pointer;
+}
+
+.code-modal.ui.modal .content-section .first {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.code-modal.ui.modal .content-section .second {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.code-modal.ui.modal .content-section .second .copy-section.first {
+    margin-top: 10px;
+}
+
+.code-modal.ui.modal .content-section .second .copy-section {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.code-modal.ui.modal .content-section .second .copy-section input {
+    width: 50vw;
+}
+
+.code-modal.ui.modal .content-section .second .copy-section p.with-padding {
+    padding-bottom: 10px;
+}
+
+.code-modal.ui.modal .content-section .second .copy-section a {
+    color: #e5004f;
+}
+
+
+.code-modal.ui.modal .content-section .second .copy-section.banner input,
+.code-modal.ui.modal .content-section .copy-section.last input {
+    width: 80vw;
+    margin-top: 6px;
+}
+
+.code-modal.ui.modal .content-section .second .copy-section .banner1 {
+    width: 728px;
+    height: 90px;
+    /*margin-bottom: -0.5vw;*/
+    margin-right: 1vw;
+}
+
+.code-modal.ui.modal .content-section .second .copy-section .banner2 {
+    width: 468px;
+    height: 60px;
+    margin-top: 1vw;
+    margin-right: 1vw;
+}
+
+.code-modal.ui.modal .content-section .second .copy-section .banner3 {
+    width: 320px;
+    height: 100px;
+    margin-top: 1vw;
+    margin-right: 1vw;
+}
+
+.code-modal.ui.modal .content-section .second .copy-section .banner4 {
+    width: 300px;
+    height: 300px;
+    margin-top: 1vw;
+    margin-right: 1vw;
+}
+
+.code-modal.ui.modal .content-section .copy-section.last .banner5 {
+    width: 560px;
+    height: 160px;
+    margin-right: 1vw;
+}
+
+.ui.modal.code-modal .close-section {
+    margin-top: 10px;
+}
+
 .ui.modal {
     width: 54vw !important;
     padding: 1vw 2vw !important;
@@ -96,15 +255,203 @@ body select {
     cursor: pointer;
 }
 
-.ui.modal.tweet-modal {
+.ui.modal.tweet-modal,
+.ui.modal.inquiry-modal,
+.ui.modal.delete-modal,
+.ui.modal.report-modal,
+.ui.modal.code-modal,
+.ui.modal.bank-account-modal,
+.ui.modal.register-account-modal {
     text-align: center;
     font-size: 1.5vw;
 }
 
-.ui.modal.tweet-modal .content {
+.ui.modal.tweet-modal .content,
+.ui.modal.inquiry-modal .content,
+.ui.modal.delete-modal .content,
+.ui.modal.report-modal .content,
+.ui.modal.code-modal .content,
+.ui.modal.bank-account-modal .content,
+.ui.modal.register-account-modal .content {
     text-align: center;
-    padding-left: 0;
-    padding-right: 0;
+    padding: 1vw 0;
+    background: transparent;
+}
+
+.ui.modal.bank-account-modal .content .header-text,
+.ui.modal.register-account-modal .content .header-text {
+    font-size: 1vw;
+    font-weight: bold;
+    margin-bottom: 1vw;
+}
+
+.ui.modal.bank-account-modal .content p.header-text img,
+.ui.modal.register-account-modal .content p.header-text img {
+    width: 10vw;
+    margin-bottom: -0.1vw;
+    margin-left: 0.3vw;
+    margin-right: 0.3vw;
+}
+
+.ui.modal.bank-account-modal .ui.form,
+.ui.modal.register-account-modal .ui.form {
+    margin-top: 1vw;
+    text-align: initial;
+}
+
+.ui.modal.report-modal .content p.header-text {
+    font-size: 1.5vw;
+    color: #323232;
+    margin-bottom: 15px;
+}
+
+.ui.modal.delete-modal .content p.header-text {
+    font-size: 1.5vw;
+    color: #ffb400;
+    margin-bottom: 15px;
+}
+
+.ui.modal.delete-modal .content .ui.form .inline.field:first-child {
+    text-align: right;
+}
+
+.ui.modal.delete-modal .content .ui.form .inline.field:last-child {
+    text-align: left;
+    padding-left: 15px;
+}
+
+.ui.modal.delete-modal .content .ui.form .inline.field {
+    font-size: 1vw;
+}
+
+.ui.modal.inquiry-modal .content p.header-text {
+    font-size: 1.5vw;
+    color: #22ac38;
+    margin-bottom: 15px;
+}
+
+.ui.modal.inquiry-modal .content .form-header {
+    margin-bottom: 0;
+}
+
+.ui.modal.inquiry-modal .content .ui.form .field textarea {
+    margin: 0px;
+    padding: 2vh 1vw;
+    resize: none;
+    width: 80%;
+    height: 20vh;
+    font-size: 0.8vw;
+    font-weight: bold;
+    line-height: 1.5em;
+    border-color: rgb(133, 133, 133);
+}
+
+.ui.modal.inquiry-modal .content .ui.form .field:nth-child(2),
+.ui.modal.report-modal .content .ui.form .field {
+    font-size: 0.8vw;
+}
+
+.ui.modal.inquiry-modal .content {
+    color: #323232;
+}
+
+.ui.modal.report-modal .content .ui.form .field > label,
+.ui.modal.bank-account-modal .ui.form .field > label,
+.ui.modal.register-account-modal .ui.form .field > label {
+    font-size: 0.8vw;
+    color: #323232;
+}
+
+.ui.modal.bank-account-modal .ui.form .field > label,
+.ui.modal.register-account-modal .ui.form .field > label {
+    width: 40%;
+    text-align: right;
+}
+
+.ui.modal.bank-account-modal .ui.form .field,
+.ui.modal.register-account-modal .ui.form .field {
+    margin-bottom: 5px;
+}
+
+.ui.modal.register-account-modal .ui.form .field:nth-child(3) {
+    margin-bottom: 20px;
+}
+
+.ui.modal.bank-account-modal .ui.form .field.account-number-field .account-number-section,
+.ui.modal.register-account-modal .ui.form .field.account-number-field .account-number-section {
+    width: 20vw;
+    display: inline-block;
+}
+
+.ui.modal.bank-account-modal .ui.form .field.account-number-field .ui.input,
+.ui.modal.register-account-modal .ui.form .field.account-number-field .ui.input {
+    width: 10vw;
+}
+
+.ui.modal.bank-account-modal .ui.form .field.account-number-field .ui.radio.checkbox,
+.ui.modal.register-account-modal .ui.form .field.account-number-field .ui.radio.checkbox {
+    width: 5vw;
+}
+
+.ui.modal.bank-account-modal .ui.form .field.account-number-field .ui.radio.checkbox label,
+.ui.modal.register-account-modal .ui.form .field.account-number-field .ui.radio.checkbox label {
+    font-size: 0.8vw;
+    color: #323232;
+    padding-left: 20px;
+}
+
+.ui.modal.bank-account-modal .ui.form .field .ui.input,
+.ui.modal.register-account-modal .ui.form .field .ui.input {
+    width: 20vw;
+}
+
+.ui.modal.inquiry-modal .content .ui.form .inline.field > label,
+.ui.modal.delete-modal .content .ui.form .inline.field > label {
+    color: #323232;
+}
+
+.ui.modal.inquiry-modal .content .ui.form .field:nth-child(2) {
+    margin-left: 0.5vw;
+    margin-right: 2vw;
+    font-size: 1vw;
+}
+
+.ui.modal.report-modal .content .ui.form .field .ui.input input {
+    width: 10vw;
+    padding: 3px 2px;
+    border-radius: 2px;
+    border-color: rgb(59, 59, 59);
+}
+
+.ui.modal.report-modal .content .ui.form .field textarea {
+    margin: 0;
+    padding: 2vh 1vw;
+    resize: none;
+    width: 80%;
+    height: 25vh;
+    font-size: 0.8vw;
+    font-weight: bold;
+    line-height: 1.5em;
+    border-color: rgb(133, 133, 133);
+}
+
+.ui.modal.inquiry-modal .content .ui.form .field .ui.input input,
+.ui.modal.delete-modal .content .ui.form .field .ui.input input,
+.ui.modal.bank-account-modal .content .ui.form .field .ui.input input,
+.ui.modal.register-account-modal .content .ui.form .field .ui.input input {
+    padding: 1px 2px;
+    border-radius: 2px;
+    border-color: rgb(133, 133, 133);
+    font-size: 0.8vw;
+}
+
+.ui.modal.inquiry-modal .content .ui.form .description-section,
+.ui.modal.report-modal .content .description-section {
+    font-size: 0.8vw;
+}
+
+.ui.modal.inquiry-modal .content .ui.form .description-section p:first-child {
+    margin-bottom: 1px;
 }
 
 .ui.modal.tweet-modal .content p.header-text {
@@ -202,26 +549,70 @@ body select {
     font-weight: bold;
 }
 
-.ui.modal.tweet-modal .content .actions-section {
+.ui.modal.tweet-modal .content .actions-section,
+.ui.modal.inquiry-modal .content .actions-section,
+.ui.modal.delete-modal .content .actions-section,
+.ui.modal.report-modal .content .actions-section,
+.ui.modal.bank-account-modal .content .actions-section,
+.ui.modal.register-account-modal .content .actions-section {
     text-align: center;
 }
 
-.ui.modal.tweet-modal .content .actions-section .ui.button {
+.ui.modal.tweet-modal .content .actions-section .ui.button,
+.ui.modal.inquiry-modal .content .actions-section .ui.button,
+.ui.modal.delete-modal .content .actions-section .ui.button,
+.ui.modal.report-modal .content .actions-section .ui.button,
+.ui.modal.bank-account-modal .content .actions-section .ui.button {
     background: transparent;
+    width: 12vw;
+    margin-top: 1vw;
+    margin-bottom: 0vw;
 }
 
-.ui.modal.tweet-modal .content .actions-section .add-image {
+.ui.modal.tweet-modal .content .actions-section .add-image,
+.ui.modal.inquiry-modal .content .actions-section .add-image,
+.ui.modal.delete-modal .content .actions-section .add-image,
+.ui.modal.report-modal .content .actions-section .add-image {
     width: 12vw;
-    /*margin-top: 1vw;*/
     margin-bottom: 0vw;
     cursor: pointer;
 }
 
-.ui.modal.tweet-modal .close-section {
+.ui.modal.bank-account-modal .content .actions-section .add-image {
+    width: 10vw;
+    margin-bottom: 0vw;
+    cursor: pointer;
+}
+
+.ui.modal.register-account-modal .content .actions-section .add-image {
+    width: 14vw;
+    margin-bottom: 0vw;
+    cursor: pointer;
+}
+
+.ui.modal.tweet-modal .content .actions-section p,
+.ui.modal.inquiry-modal .content .actions-section p,
+.ui.modal.report-modal .content .actions-section p {
+    font-size: 1.5vw;
+}
+
+.ui.modal.tweet-modal .close-section,
+.ui.modal.inquiry-modal .close-section,
+.ui.modal.delete-modal .close-section,
+.ui.modal.report-modal .close-section,
+.ui.modal.code-modal .close-section,
+.ui.modal.bank-account-modal .close-section,
+.ui.modal.register-account-modal .close-section {
     text-align: right;
 }
 
-.ui.modal.tweet-modal .close-section img {
+.ui.modal.tweet-modal .close-section img,
+.ui.modal.inquiry-modal .close-section img,
+.ui.modal.delete-modal .close-section img,
+.ui.modal.report-modal .close-section img,
+.ui.modal.code-modal .close-section img,
+.ui.modal.bank-account-modal .close-section img,
+.ui.modal.register-account-modal .close-section img {
     width: 5vw;
     cursor: pointer;
 }
@@ -355,18 +746,18 @@ body select {
     font-weight: normal;
 }
 
-.footer-section .right-footer img:first-child {
+.footer-section .right-footer img {
     width: 10vw;
     cursor: pointer;
-    margin-right: 1vw;
 }
-
 
 .footer-section .right-footer img:last-child {
     width: 10vw;
+    margin-left: 1vw;
 }
 
-.index-page {
+.index-page,
+.affiliate-page {
     padding: 0;
     margin: 0;
     border-width: 0;
@@ -379,7 +770,8 @@ body select {
     overflow: hidden;
 }
 
-.index-page .cover-image {
+.index-page .cover-image,
+.affiliate-page .cover-image {
     width: 100vw;
     object-fit: cover;
 }
@@ -481,6 +873,7 @@ body select {
 .index-page .index-footer .ui.list .item:last-child img {
     width: 30vw;
     padding-bottom: 1vh;
+    cursor: pointer;
 }
 
 .menu-section {
@@ -603,15 +996,19 @@ body select {
     overflow-y: scroll;
 }
 
-.main-menu-section .ui.grid .popularity-column .popularity-elements .box {
-    margin-top: 0;
-    margin-bottom: 2.55vh;
-    margin-left: 5%;
-    margin-right: 1%;
-    padding-top: 4%;
-    padding-left: 4%;
-    padding-right: 4%;
-    padding-bottom: 2.5%;
+.cards-container.column{
+    margin: 0;
+    padding: 0 0.1% !important;
+    height: 63vh;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    text-align: left;
+}
+
+.box {
+    position: relative;
+    margin: 0 1% 2.55vh 5%;
+    padding: 4% 4% 2.5% 4%;
     top: 0;
     left: 0;
     /*width: 86%;
@@ -624,11 +1021,31 @@ body select {
     line-height: 1.3em;
 }
 
-.main-menu-section .ui.grid .popularity-column .popularity-elements .box:hover {
+.box.all {
+    font-size: 0.8vw;
+    margin: 0px 0.5% 1.7vh 1%;
+    padding: 1%;
+    display: inline-block;
+    width: 23.3%;
+}
+
+.box-header{
+    text-align: left;
+    margin-bottom: 0.4vh;
+}
+
+.box-header img{
+    width: 15%;
+    margin-left: 1.6vw;
+    margin-right: 0vw;
+    margin-bottom: -0.9vh;
+}
+
+.box:hover {
     cursor: pointer;
 }
 
-.main-menu-section .ui.grid .popularity-column .popularity-elements .box .profile-image {
+.box .profile-image {
     width: 5.625vw;
     height: 7.5vw;
     float: left;
@@ -637,40 +1054,63 @@ body select {
     object-fit: cover;
 }
 
-.main-menu-section .ui.grid .popularity-column .popularity-elements .box p {
+.box.all .profile-image{
+    width: 3.75vw;
+    height: 5vw;
+}
+
+.box p {
     margin-bottom: 0;
 }
 
-.main-menu-section .ui.grid .popularity-column .popularity-elements .box .box-text {
-    text-align: right;
-    margin-top: -1.1vw;
+.box .box-text {
+    /*text-align: right;
+    margin-top: -1.1vw;*/
 }
 
-.main-menu-section .ui.grid .popularity-column .popularity-elements .box .box-text p {
+.box .box-text p {
     font-size: 1vw;
-    display: contents;
+    margin-right: 15%;
+    text-align: right;
+
 }
 
-.main-menu-section .ui.grid .popularity-column .popularity-elements .box .box-text .number-img {
-    width: 20%;
-    margin-top: 0;
-    margin-bottom: -5%;
-    margin-left: 0;
-    margin-right: -1.1vw;
+.box.all .box-text p {
+    font-size: 0.7vw;
 }
 
-.main-menu-section .ui.grid .popularity-column .popularity-elements .box .image-section {
+.box .number-img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 18%;
+
+}
+
+.box .image-section {
     text-align: center;
 }
 
-.main-menu-section .ui.grid .popularity-column .popularity-elements .box .image-section img {
+.box .image-section img {
     width: 50%;
+}
+
+.point-section{
+    width: 56%;
+    text-align: center;
+    margin: auto;
+    margin-bottom: 9.5%;
+    padding-top: 0.3vh;
+    padding-bottom: 0.3vh;
+    color: #ffffff;
+    font-size: 1vw;
 }
 
 .main-menu-section .ui.grid .popularity-column .popularity-footer img {
     width: 50%;
     margin-right: 1.5vw;
     margin-top: 0;
+    cursor: pointer;
 }
 
 .main-menu-section .ui.grid .main-menu-column {
@@ -1422,7 +1862,8 @@ body select {
 }
 
 @media (max-width: 1024px) {
-    .index-page .cover-image {
+    .index-page .cover-image,
+    .affiliate-page .cover-image {
         height: 100%;
     }
 }
@@ -1980,4 +2421,171 @@ body select {
 
 .Toastify__slide-exit--bottom-center {
     animation-name: Toastify__slideOutDown;
+}
+
+.affiliate-page .affiliate-login {
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+    position: fixed;
+    top: 7vh;
+    left: 0vw;
+    z-index: 2;
+    font-size: 1vw;
+    text-align: center;
+}
+
+.affiliate-page .affiliate-login img {
+    width: 50vw;
+    margin-bottom: 0vh;
+}
+
+.affiliate-page .affiliate-login p span {
+    color: #ff0000;
+}
+
+.affiliate-page .affiliate-login .ui.form .fields {
+    margin: auto;
+    width: max-content;
+}
+
+.affiliate-page .affiliate-login .ui.form .fields .field:first-child {
+    text-align: right;
+}
+
+.affiliate-page .affiliate-login .ui.form .fields .password-field.field {
+    text-align: left;
+    padding-left: 15px;
+    padding-right: 2vw;
+}
+
+.affiliate-page .affiliate-login .ui.form .field,
+.affiliate-page .affiliate-login .ui.form p {
+    font-size: 1vw;
+}
+
+.affiliate-page .affiliate-login .ui.form p {
+    margin: auto;
+    color: #323232;
+}
+
+.affiliate-page .affiliate-login .ui.form .field > label {
+    font-size: 1vw;
+    display: inline-block;
+    color: #323232;
+}
+
+.affiliate-page .affiliate-login .ui.form .field .ui.input {
+    width: 15vw;
+    padding-top: 0.4vw;
+    padding-bottom: 0.4vw;
+}
+
+.affiliate-page .affiliate-login .ui.form .field .ui.input input {
+    padding: 8px 2px;
+    border-color: rgb(133, 133, 133);
+}
+
+.affiliate-page .affiliate-login .ui.form.logout-form{
+    margin-right: 4%;
+    float: right;
+}
+
+.affiliate-page .affiliate-login .ui.form.logout-form .logout-image{
+    width: 9vw;
+    margin: auto;
+    cursor: pointer;
+    height: fit-content;
+    padding-right: 4%;
+}
+
+.affiliate-page .affiliate-login .ui.form.logout-form p {
+    cursor: pointer;
+}
+
+.affiliate-page .affiliate-login .ui.form .login-image {
+    width: 8vw;
+    margin: auto;
+    cursor: pointer;
+    height: fit-content;
+}
+
+.affiliate-page .discount-section {
+    padding: 0;
+    margin: 0;
+    border-width: 0px;
+    width: 100vw;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -35%);
+    z-index: 7;
+    text-align: center;
+    font-size: 1.5vw;
+    position: fixed;
+}
+
+.affiliate-page .discount-section img {
+    width: 80vw;
+}
+
+.affiliate-page .discount-section .follower-text {
+    font-size: 1vw;
+    color: #323232;
+    margin-top: 2vw;
+}
+
+.affiliate-page .discount-section .follower-img {
+    width: 4vw;
+    margin-bottom: -0.4vw;
+    margin-right: 0.2vw;
+}
+
+.affiliate-page .discount-section .logo-img {
+    width: 10vw;
+    margin-bottom: -0.2vw;
+    margin-left: 0.3vw;
+    margin-right: 0.3vw;
+}
+
+.affiliate-page .discount-section .reward-text {
+    margin-bottom: 0;
+    margin-top: 2vw;
+}
+
+.affiliate-page .discount-section span span {
+    color: #e5004f;
+}
+
+.affiliate-page .discount-section .billing-image {
+    width: 70vw;
+}
+
+.affiliate-page .discount-section .account-image {
+    width: 35vw;
+    margin-top: 5vh;
+    cursor: pointer;
+}
+
+.affiliate-page .copyright-text {
+    padding: 0;
+    margin: 0;
+    border-width: 0px;
+    width: 100vw;
+    position: fixed;
+    bottom: 1vh;
+    left: 0px;
+    z-index: 6;
+    text-align: center;
+    font-size: 1vw;
+    font-weight: normal;
+}
+
+.register-button{
+    position: fixed;
+    bottom: 0;
+    cursor: pointer;
+}
+
+.register-button img{
+    width: 20vw;
 }
