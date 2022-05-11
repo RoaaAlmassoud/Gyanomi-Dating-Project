@@ -27,9 +27,9 @@ export default class Box extends React.Component {
                 }
                 <div className={`box ${forAll ? 'all' : ''}`}
                      key={index}
-                    /*onClick={() => {
+                    onClick={() => {
                    this.getDetails(element)
-               }}*/
+               }}
                 >
                     <img className={'profile-image'} src={element.profileImage} alt={'img'}/>
                     <img className={'number-img'} alt={'img'}

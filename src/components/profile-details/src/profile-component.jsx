@@ -248,7 +248,7 @@ export default class ProfileComponent extends React.Component {
                                     </div>
                                 </Grid.Column>
                                 <Grid.Column computer={3} tablet={3} mobile={3}>
-                                    <SideMenu/>
+                                    <SideMenu props={this.props}/>
                                 </Grid.Column>
                             </Grid.Row>
                     }

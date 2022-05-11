@@ -159,6 +159,8 @@ export default class SideMenu extends Component {
             localStorage.setItem('gender', loginResponse.data.data.user.is_male? 'male': 'female')
             localStorage.setItem('accountType', "user");
             window.location.reload(true)
+        } else{
+            this.props.props.notify(true, loginResponse.message ? loginResponse.message : 'Error!!please try again!')
         }
 
     };

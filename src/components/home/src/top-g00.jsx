@@ -71,7 +71,7 @@ export default class TopG00 extends React.Component {
 
 
                         <Grid.Column computer={4} tablet={4} mobile={4}>
-                            <SideMenu/>
+                            <SideMenu props={this.props}/>
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>

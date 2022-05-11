@@ -180,7 +180,7 @@ export default class All extends React.Component {
                                 </>
                         }
                         <Grid.Column computer={3} tablet={4} mobile={4}>
-                            <SideMenu/>
+                            <SideMenu props={this.props}/>
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>

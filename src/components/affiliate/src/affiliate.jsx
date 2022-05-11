@@ -18,7 +18,6 @@ export default class Affiliate extends React.Component {
     ]
     constructor(props) {
         super(props);
-        console.log('type: ', localStorage.getItem('accountType'), props)
         this.affiliateApi = new AffiliateApi(this)
         this.codeModalRef = React.createRef();
         this.registerModalRef = React.createRef();
@@ -121,19 +120,20 @@ export default class Affiliate extends React.Component {
         if (!Helper.isEmpty(this.state.validationErrors)) return null;
         let {loginForm} = this.state;
         this.setState({loaded: true});
-        console.log('affiliateForm: ', loginForm, 'props: ', this.props)
         const loginResponse = await this.affiliateApi.login(loginForm);
-        console.log('loginResponse: ', loginResponse)
-        this.setState({loaded: false, showLoginForm: false});
+
         if (loginResponse.data && loginResponse.data.code === 0) {
+            this.setState({loaded: false, showLoginForm: false});
             localStorage.setItem('token', loginResponse.data.data.token);
             localStorage.setItem('accountId', loginResponse.data.data.affiliator.uuid);
             localStorage.setItem('name', loginResponse.data.data.affiliator.name);
             localStorage.setItem('email', loginResponse.data.data.affiliator.email);
             localStorage.setItem('accountType', "affiliate");
             this.openCodeModal()
+
         } else {
-            this.props.props.props.notify(true, loginResponse.message? loginResponse.message: 'Error! please try again!')
+            this.setState({loaded: false});
+            this.props.notify(true, loginResponse.message? loginResponse.message: 'Error! please try again!')
         }
     };
 
@@ -155,7 +155,6 @@ export default class Affiliate extends React.Component {
         let {loginForm, showLoginForm} = this.state;
         const emailError = this.context.errorFor(this.state, 'email', null, true);
         const passwordError = this.context.errorFor(this.state, 'password', null, true);
-        console.log('showLoginForm: ', showLoginForm)
         return (
             <div className={'affiliate-page'}>
                 <img className={'cover-image'} src="/images/index-images/bg_01.jpg"
