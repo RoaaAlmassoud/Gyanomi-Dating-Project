@@ -92,6 +92,9 @@ export default class ProfileComponent extends React.Component {
                 mainImage: profileData.images[0],
                 isMale: isMale
             })
+        } else{
+            this.props.notify(true,'Error!!please try again!')
+            this.props.history.goBack()
         }
     }
 
